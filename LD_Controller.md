@@ -30,14 +30,37 @@ class {ControllerName} extends Controller{
 | PUT/PATCH   | /test/{text}      | `update`  |
 | DELETE      | /test/{text}      | `destroy` |
 
-## *コマンド*
+## Response JSON
 
-```php:php
-View::make();
-DB::
-```
-などなど。
+レスポンスを使うには、まず下のファイルを読みこむ
 
-***
+`use Illuminate\Http\Response;`
 
-今日はここまで。
+最後に値を返すときはこう書けばいい。
+
+`return  response() -> json($name);`
+
+## DataBase
+
+ファイル読み込み
+
+`use Illuminate\Support\Facades\DB;`
+
+SELECT文（例）
+`$results = DB::select('select * from users');`
+
+- `DB::select()`
+- `DB::insert()`
+- `DB::update()`
+- `DB::delete()`
+- `DB::statement()`
+
+## View呼び出し
+
+`return view('{ファイル名}');`
+
+Viewに値を渡したい時 -> `with`
+
+- `return view('{ファイル名}') -> with('text',$text);`
+- `return view('{ファイル名}',$text);`
+- `return view('{ファイル名}') -> with($hash);`
